@@ -1,4 +1,4 @@
-# File-Manager API (Stack: Node)
+# File-Manager API (Stack: Nodejs)
 
 💡 Dieses Repo ist im Zusammenhang mit der besonderen Lernleistung im Fach Informatik von Jannis Günsche entstanden.
 
