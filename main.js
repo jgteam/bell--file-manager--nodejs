@@ -7,11 +7,11 @@ const uuid = require('uuid');
 const fileUpload = require('express-fileupload');
 const bodyParser = require('body-parser');
 
-const mysqlconfig = require('./mysql.conf');
+const Mysqlconfig = require('./mysql.conf');
 
 const port = process.env.PORT || "3000";
 
-// eg: "https://exapmle.com/"
+// eg: "https://example.com/"
 const rootURL = "http://localhost:3000/";
 
 // enable files upload
@@ -25,10 +25,10 @@ app.use(bodyParser.urlencoded({extended: true}));
 
 // https://www.w3schools.com/nodejs/nodejs_mysql.asp
 const con = mysql.createConnection({
-    host: mysqlconfig.host,
-    user: mysqlconfig.user,
-    password: mysqlconfig.password,
-    database: mysqlconfig.database
+    host: Mysqlconfig.host,
+    user: Mysqlconfig.user,
+    password: Mysqlconfig.password,
+    database: Mysqlconfig.database
 });
 
 con.connect(function(err) {
@@ -52,7 +52,7 @@ function getFileName(fileid) {
 
     return new Promise(function (resolve, reject) {
 
-        con.query("SELECT * FROM files WHERE id = " + con.escape(fileid), function (err, result, fields) {
+        con.query("SELECT * FROM files_nodejs WHERE id = " + con.escape(fileid), function (err, result, fields) {
             if (err) throw err;
 
             if(result.length < 1) {
@@ -96,10 +96,10 @@ app.post('/upload', async function(req, res){
             file.mv("./filestorage/" + fileid);
 
             // https://www.w3schools.com/nodejs/nodejs_mysql_insert.asp
-            var sql = "INSERT INTO files (id, filename) VALUES (" + con.escape(fileid) + ", " + con.escape(filename) + ")";
-            con.query(sql, function (err, result) {
+            var sql = "INSERT INTO files_nodejs (id, filename) VALUES (" + con.escape(fileid) + ", " + con.escape(filename) + ")";
+            con.query(sql, /*function (err, result) {
                 if (err) throw err;
-            });
+            }*/);
 
             res.json({
                 "status": true,

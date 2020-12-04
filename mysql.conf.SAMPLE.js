@@ -2,22 +2,9 @@
 
 /*
 --
--- Tabellenstruktur für Tabelle `files`
+-- Tabellenstruktur für Tabelle `files_nodejs`
 --
-
-CREATE TABLE `files` (
-  `id` varchar(64) NOT NULL,
-  `filename` varchar(512) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
-
---
--- Indizes für die Tabelle `files`
---
-
-ALTER TABLE `files`
-  ADD PRIMARY KEY (`id`);
-COMMIT;
+CREATE TABLE `files_nodejs` ( `id` VARCHAR(64) NOT NULL , `filename` VARCHAR(512) NOT NULL , `uploadtimestamp` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP , PRIMARY KEY (`id`)) ENGINE = InnoDB;
 */
 
 const config = {};
