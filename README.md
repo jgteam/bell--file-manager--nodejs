@@ -6,6 +6,11 @@
 - [File Manager API in Deno](https://github.com/jgteam/bell--file-manager--deno)
 - [File Manager API in PHP](https://github.com/jgteam/bell--file-manager--php)
 
+## Installation
+```
+npm install
+```
+
 ## Benutzung 
 Start server:
 ```
