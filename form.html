@@ -18,7 +18,7 @@
             <button>Über AJAX senden</button>
         </form>
 
-        <!-- Tabelle, in welche zuküftige Antworten geschrieben werden -->
+        <!-- Tabelle, in welche zukünftige Antworten geschrieben werden -->
         <table id="responses" border="1">
             <tr>
                 <th>Responses:</th>
@@ -33,10 +33,10 @@
             // Wird ausgeführt, wenn das Formular abgeschickt werden soll
             $('#uploadform').submit(function(e) {
 
-                // Verhindert das standardmäßige Abschicken des FOrmulares, über das öffnen einer neuen Seite mit den übergebenen Parametern
+                // Verhindert das standardmäßige Abschicken des Formulares, über das öffnen einer neuen Seite mit den übergebenen Parametern
                 e.preventDefault();
 
-                // Schreibt die Datei in ein FormData-Element. für die spätere Übergabe
+                // Schreibt die Datei in ein FormData-Element für die spätere Übergabe.
                 // https://makitweb.com/how-to-upload-image-file-using-ajax-and-jquery
                 var formdata = new FormData();
                 var files = $('#file')[0].files;
@@ -55,7 +55,7 @@
                     processData: false
                 }).done(function (res) {
 
-                    // Schreibt die Antwort nach erfolg in die Tabelle
+                    // Schreibt die Antwort nach Erfolg in die Tabelle
                     $("#responses").append("<tr><td>" + JSON.stringify(res) + "</td></tr>");
 
                 }).fail(function (res) {
