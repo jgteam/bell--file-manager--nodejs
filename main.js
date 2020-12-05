@@ -99,7 +99,7 @@ app.post('/upload', async function(req, res){
             // Dateinamen auslesen
             var filename = file.name;
 
-            // Datei im Ordner filestorage mit der fileid als Dateinamen speichern/verschieben
+            // Datei in dem/den Ordner filestorage mit der fileid als Dateinamen speichern/verschieben
             file.mv("./filestorage/" + fileid);
 
             // https://www.w3schools.com/nodejs/nodejs_mysql_insert.asp
