@@ -11,7 +11,7 @@
 Es handelt sich hier um eine **MEN**-Stack Applikation.
 
 - M: MariaDB (MySQL, etc)
-- E: Express
+- E: Express (NPM-Module)
 - N: Nodejs
 
 Weitere Software, welche zum Einsatz kommt:
