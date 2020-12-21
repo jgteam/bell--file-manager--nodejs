@@ -6,6 +6,25 @@
 - [File Manager API in Deno](https://github.com/jgteam/bell--file-manager--deno)
 - [File Manager API in PHP](https://github.com/jgteam/bell--file-manager--php)
 
+## Stack
+
+Es handelt sich hier um eine **MEN**-Stack Applikation.
+
+- M: MariaDB (MySQL, etc)
+- E: Express
+- N: Nodejs
+
+Weitere Software, welche zum Einsatz kommt:
+
+- body-parser (NPM-Module)
+- express (NPM-Module)
+- express-fileupload (NPM-Module)
+- mysql (NPM-Module)
+- (nodemon (NPM-Module))
+- uuid (NPM-Module)
+- jQuery
+
+
 ## Vorbereitung
 Benenne `config.SAMPLE.js` zu `config.js` um und ersetze die Platzhalter-Werte mit deinen eigenen.
 Beachte die Tabellenstruktur, welche in dieser Datei beschrieben wird.
