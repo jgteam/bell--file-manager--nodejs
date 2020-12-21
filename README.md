@@ -24,7 +24,6 @@ Weitere Software, welche zum Einsatz kommt:
 - uuid (NPM-Module)
 - jQuery
 
-
 ## Vorbereitung
 Benenne `config.SAMPLE.js` zu `config.js` um und ersetze die Platzhalter-Werte mit deinen eigenen.
 Beachte die Tabellenstruktur, welche in dieser Datei beschrieben wird.
