@@ -5,6 +5,7 @@
 💡 Dieses Projekt wurde auch in zwei anderen Softwarestacks umgesetzt:
 - [File Manager API in Deno](https://github.com/jgteam/bell--file-manager--deno)
 - [File Manager API in PHP](https://github.com/jgteam/bell--file-manager--php)
+- [File Manager API in PHP (ohne JavaScript)](https://github.com/jgteam/bell--file-manager--php--nojs)
 
 ## Stack
 
