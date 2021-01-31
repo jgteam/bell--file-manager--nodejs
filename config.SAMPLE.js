@@ -19,5 +19,8 @@ config.database = "dbname";
 config.port = "3000";
 config.rootURL = "http://localhost:3000/";
 
+// Session Secret
+config.sessionSecret = "shouldBeChanged!";
+
 module.exports = config;
 

@@ -6,6 +6,10 @@ const http = require('http').Server(app);
 const mysql = require('mysql');
 const uuid = require('uuid');
 
+// Sessions: https://www.tutorialspoint.com/expressjs/expressjs_sessions.htm
+const cookieParser = require('cookie-parser');
+const session = require('express-session');
+
 const fileUpload = require('express-fileupload');
 const bodyParser = require('body-parser');
 
@@ -16,6 +20,10 @@ const port = config.port;
 const rootURL = config.rootURL;
 
 // --- Middlewares
+
+// Session und Cookies
+app.use(cookieParser());
+app.use(session({secret: config.sessionSecret, resave: false, saveUninitialized: false}));
 
 // Ermöglicht Dateiuploadsa
 app.use(fileUpload({
@@ -107,12 +115,26 @@ app.post('/upload', async function(req, res){
             var sql = "INSERT INTO files_nodejs (id, filename) VALUES (" + con.escape(fileid) + ", " + con.escape(filename) + ")";
             con.query(sql);
 
-            // Erfolgs-Antwort erstellen
-            res.status(200).json({
+
+            // Antwort erstellen
+            var response = {
                 "status": true,
                 "filename": filename,
                 "download": getFileDownloadURL(fileid)
-            });
+            };
+
+            // Antwort im Verlauf speichern
+            if(!req.session.uploads) {
+                req.session.uploads = [response];
+            } else {
+                var uploads = req.session.uploads;
+                uploads.push(response);
+                req.session.uploads = uploads;
+            }
+
+
+            // Erfolgs-Antwort übermitteln
+            res.status(200).json(response);
 
         }
 
@@ -146,6 +168,16 @@ app.post('/upload', async function(req, res){
     } else {
         // Datei ist in der Datenbank vermerkt
 
+        // fileid im Verlauf speichern
+        if(!req.session.downloads) {
+            req.session.downloads = [fileid];
+        } else {
+            var downloads = req.session.downloads;
+            downloads.push(fileid);
+            req.session.downloads = downloads;
+        }
+
+
         // Dateidownload-Antwort erstellen
         res.status(200).download("./filestorage/" + fileid, filename + "");
 
@@ -156,12 +188,37 @@ app.post('/upload', async function(req, res){
 
     // Error-Antwort erstellen
     res.status(400).json({"status":false, "message": "Fileid not defined"});
+}).get('/getUploadHistory', async function(req, res) {
+    // Upload-Verlauf übermitteln
+
+    if(req.session.uploads) {
+        res.status(200).json(req.session.uploads);
+    } else {
+        // Verlauf ist leer
+
+        res.status(404).json(null);
+    }
+
+}).get('/getDownloadHistory', async function(req, res) {
+    // Download-Verlauf übermitteln
+
+    if(req.session.downloads) {
+        res.status(200).json(req.session.downloads);
+    } else {
+        // Verlauf ist leer
+
+        res.status(404).json(null);
+    }
+
 });
 
 // --- Static files
 app.get('/', function(req, res){
     // Übermittelt beim Aufrufen von der rootURL die HTML-Form (form.html)
     res.sendFile(__dirname + '/form.html');
+}).get('/history', function(req, res){
+    // Übermittelt beim Aufrufen von /history die HTML-Datei hist.html
+    res.sendFile(__dirname + '/hist.html');
 });
 
 // --- Start listening
