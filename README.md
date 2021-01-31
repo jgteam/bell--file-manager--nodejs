@@ -18,6 +18,8 @@ Es handelt sich hier um eine **MEN**-Stack Applikation.
 Weitere Software, welche zum Einsatz kommt:
 
 - body-parser (NPM-Module)
+- cookie-parser (NPM-Module)
+- express-session (NPM-Module)
 - express-fileupload (NPM-Module)
 - mysql (NPM-Module)
 - (nodemon (NPM-Module))
