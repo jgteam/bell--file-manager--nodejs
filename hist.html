@@ -83,9 +83,17 @@
                     }
 
                 }).fail(function (res) {
-                    // Falls den Verlauf leer sein sollte
+                    // Fehler
 
-                    $("#history").append("<tr><td style='color:red;'>No history found.</td></tr>");
+                    if(res.status == 501) {
+                        // Falls die Varlauf-Funktion nicht unterstützt werden sollte
+                        $("#history").append("<tr><td style='color:#f713ff;'>Feature not supported!</td></tr>");
+
+                    } else {
+                        // Verlauf ist leer
+                        $("#history").append("<tr><td style='color:red;'>No history found.</td></tr>");
+
+                    }
 
                 });
 
