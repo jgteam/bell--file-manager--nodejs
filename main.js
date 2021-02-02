@@ -119,8 +119,12 @@ app.post('/upload', async function(req, res){
             // Antwort erstellen
             var response = {
                 "status": true,
+                "download": getFileDownloadURL(fileid),
                 "filename": filename,
-                "download": getFileDownloadURL(fileid)
+                // Weitere Eigenschaften
+                "filetype": file.mimetype,
+                "filesize": file.size,
+                "md5": file.md5
             };
 
             // Antwort im Verlauf speichern
