@@ -1,4 +1,4 @@
-# File-Manager API (Stack: Nodejs)
+# File-Manager API (Stack: Node.js)
 
 💡 Dieses Repo ist im Zusammenhang mit der [besonderen Lernleistung im Fach Informatik von Jannis Günsche](https://github.com/jgteam/bell--paper) entstanden.
 
